@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">UIcomponents</string>
+    <string name="text_btnToListView">Android ListView</string>
+    <string name="text_btnToAlertDialog">Alert Dialog</string>
+    <string name="text_btnToMenu">XML定义菜单</string>
+    <string name="text_btnToContextMenu">ActionMode的上下文菜单</string>
+    <string name="title_activity_alert_dialog">AlertDialogActivity</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="title_activity_context_menu">ContextMenuActivity</string>
+</resources>
