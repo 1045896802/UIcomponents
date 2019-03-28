@@ -4,7 +4,7 @@
 
 1.利用SimpleAdapter实现如下界面效果
 
-![Image text](https://raw.githubusercontent.com/1045896802/UIcompoments/master/img/1y.png)
+![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/1y.png)
 
 2.创建自定义布局的AlertDialog
 
@@ -12,7 +12,7 @@
 
 请创建一个如图所示的布局，调用 AlertDialog.Builder对象上的setView() 将布局添加到AlertDialog。
 
-![Image text](https://raw.githubusercontent.com/1045896802/UIcompoments/master/img/2y.png)
+![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/2y.png)
 
 3.使用XML定义菜单
 
@@ -22,7 +22,7 @@
 
 （3）字体颜色（有红色和黑色这2个选项），点击之后设置测试文本的字体
 
-![Image text](https://raw.githubusercontent.com/1045896802/UIcompoments/master/img/3y.png)
+![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/3y.png)
 
 4.创建上下文操作模式(ActionMode)的上下文菜单
 
@@ -32,7 +32,7 @@
 
 （3）参考文献：https://developer.android.google.cn/guide/topics/ui/menus.html
 
-![Image text](https://raw.githubusercontent.com/1045896802/UIcompoments/master/img/4y.png)
+![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/4y.png)
 
 5.自学内容
 
