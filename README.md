@@ -48,384 +48,258 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
 ## 二. 关键代码
 
-1.线性布局
-
-  线性布局中由于需要给TextView组件加上边框，故在drawable目录下新建textview_border.xml文件，代码如下：
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <shape xmlns:android="http://schemas.android.com/apk/res/android"
-        android:shape="rectangle">
-
-        <stroke
-            android:width="1dip"
-            android:color="#ffffff" />
-    </shape>
-    
-  在布局文件中使用一个垂直的LinearLayout嵌套一个水平的LinearLayout，代码如下：
+  1.利用SimpleAdapter实现界面效果
+  
+  （1）activity_list_view.xml
   
     <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      android:id="@+id/LinearLayout"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="#000000"
-      android:orientation="vertical">
-
-      <LinearLayout
-          android:id="@+id/LinearLayout1"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <TextView
-              android:id="@+id/textView1"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="One,One"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView2"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="One,Two"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView3"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="One,Three"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView4"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="One,Four"
-              android:textColor="#CCCCCC"></TextView>
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/LinearLayout2"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <TextView
-              android:id="@+id/textView5"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Two,One"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView6"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Two,Two"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView7"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Two,Three"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView8"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Two,Four"
-              android:textColor="#CCCCCC"></TextView>
-
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/LinearLayout3"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <TextView
-              android:id="@+id/textView9"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Three,One"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView10"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Three,Two"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView11"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Three,Three"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView12"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Three,Four"
-              android:textColor="#CCCCCC"></TextView>
-
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/LinearLayout4"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-
-          <TextView
-              android:id="@+id/textView13"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Four,One"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView14"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Four,Two"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView15"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Four,Three"
-              android:textColor="#CCCCCC"></TextView>
-
-          <TextView
-              android:id="@+id/textView16"
-              android:layout_width="wrap_content"
-              android:layout_height="40dp"
-              android:layout_margin="5dp"
-              android:layout_weight="1"
-              android:background="@drawable/textview_border"
-              android:gravity="center"
-              android:paddingLeft="5dp"
-              android:paddingRight="5dp"
-              android:text="Four,Four"
-              android:textColor="#CCCCCC"></TextView>
-        </LinearLayout>
-    </LinearLayout>
-    
-    
-  2.约束布局
-  
-  布局文件，代码如下
-  
-    <?xml version="1.0" encoding="utf-8"?>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000">
+        tools:context=".ListViewActivity">
 
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="410dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="272dp"
-            android:background="#FF4040"
-            android:gravity="center"
-            android:text="VIOLET"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView24"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="172dp"
-            android:layout_marginTop="148dp"
-            android:background="#0000CD"
-            android:gravity="center"
-            android:text="INDIGO"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.547"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <ListView
+            android:id="@+id/ListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.CoordinatorLayout>
+    
+    （2）items.xml（作为listview的每个item）
+    
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView26"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="172dp"
-            android:layout_marginTop="148dp"
-            android:background="#4876FF"
-            android:gravity="center"
-            android:text="BLUE"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_gravity="center"
+            android:textSize="25dp"/>
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FF4040"
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="RED"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/colorAccent"
+            android:adjustViewBounds="true"/>
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FF7F50"
-            android:gravity="center"
-            android:text="ORANGE"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="172dp" />
+    </LinearLayout>
+    
+   （3）ListViewActivity.java
 
-        <TextView
-            android:id="@+id/TextView1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="#FF4040"
-            android:gravity="center"
-            android:text="RED"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    package com.example.uicomponents;
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="148dp"
-            android:background="#00FF00"
-            android:gravity="center"
-            android:text="GREEN"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    import android.os.Bundle;
+    import android.support.design.widget.FloatingActionButton;
+    import android.support.design.widget.Snackbar;
+    import android.support.v7.app.AppCompatActivity;
+    import android.support.v7.widget.Toolbar;
+    import android.view.View;
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="332dp"
-            android:background="#FFFF00"
-            android:gravity="center"
-            android:text="YELLOW"
-            android:textAppearance="@style/TextAppearance.AppCompat.Button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
 
-    </android.support.constraint.ConstraintLayout>
+    import android.graphics.Color;
+    import android.widget.ListView;
+    import android.widget.SimpleAdapter;
+
+    import android.widget.AdapterView;
+    import android.widget.AdapterView.OnItemClickListener;
+    import android.widget.LinearLayout;
+    import android.widget.TextView;
+    import android.widget.Toast;
+    public class ListViewActivity extends AppCompatActivity {
+        private ListView listView;
+        private SimpleAdapter simpleAdapter;
+        private List<Map<String, Object>> listItems;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_list_view);
+            listView = (ListView) findViewById(R.id.ListView);
+            //填充数据
+            putData();
+            simpleAdapter = new SimpleAdapter(this, listItems, R.layout.items, new String[]{"title", "image"}, new int[]{R.id.title, R.id.image});
+            listView.setAdapter(simpleAdapter);
+        }
+
+        private void putData() {
+
+            int[] imageId = new int[]{R.drawable.cat,
+                    R.drawable.dog,
+                    R.drawable.elephant,
+                    R.drawable.lion,
+                    R.drawable.monkey,
+                    R.drawable.tiger};
+            final String[] title = new String[]{"Cat", "Dog", "Elephant", "Lion", "Monkey", "Tiger"};
+
+            listItems = new ArrayList<Map<String, Object>>();
+            //通过for循环将图片id和列表项文字放到Map中，并添加到list集合中
+            for (int i = 0; i < imageId.length; i++) {
+                //实例化Map对象
+                Map<String, Object> map = new HashMap<String, Object>();
+                map.put("image", imageId[i]);
+                map.put("title", title[i]);
+                //将map对象添加到List集合
+                listItems.add(map);
+            }
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    view.setBackgroundColor(Color.TRANSPARENT);
+                    Toast.makeText(ListViewActivity.this,title[position],Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }
+
+    }
+
+    
+  2.创建自定义布局的AlertDialog
+  
+  （1）activity_alert_dialog.xml
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".AlertDialogActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    </android.support.design.widget.CoordinatorLayout>
+    
+    （2）login.xml（作为弹出框）
+    
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            app:srcCompat="@drawable/header_logo" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/text_btnCancel"
+                android:textAllCaps="false"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/btnSignin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:text="@string/text_btnSignin"
+                android:textAllCaps="false"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+  
+  （3）AlertDialogActivity.java
+  
+    package com.example.uicomponents;
+
+    import android.content.DialogInterface;
+    import android.os.Bundle;
+    import android.support.design.widget.FloatingActionButton;
+    import android.support.design.widget.Snackbar;
+    import android.support.v7.app.AlertDialog;
+    import android.support.v7.app.AppCompatActivity;
+    import android.support.v7.widget.Toolbar;
+    import android.view.View;
+    import android.widget.Button;
+    import android.widget.EditText;
+    import android.widget.Toast;
+
+    public class AlertDialogActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_alert_dialog);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            //获取布局
+            View view = View.inflate(AlertDialogActivity.this, R.layout.login, null);
+
+            builder.setView(view);
+
+            //创建对话框
+            builder.create().show();
+        }
+
+    }
     
   3.表格布局
   
@@ -516,16 +390,20 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
   ## 三. 实验结果及截图
   
-  1.线性布局
+  1.利用SimpleAdapter实现界面效果
   
-  ![Image text](https://raw.githubusercontent.com/1045896802/Layout/master/img/1r.png)
+  ![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/1r.png)
   
-  2.约束布局
+  2.创建自定义布局的AlertDialog
   
-  ![Image text](https://raw.githubusercontent.com/1045896802/Layout/master/img/2r.png)
+  ![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/2r.png)
   
-  3.表格布局
+  3.使用XML定义菜单
   
-  ![Image text](https://raw.githubusercontent.com/1045896802/Layout/master/img/3r.png)
+  ![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/3r.png)
+  
+  4.创建上下文操作模式(ActionMode)的上下文菜单
+  
+  ![Image text](https://github.com/1045896802/UIcomponents/blob/master/img/4r.png)
 
 
