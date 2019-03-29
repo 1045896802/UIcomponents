@@ -4,7 +4,25 @@
     <string name="text_btnToAlertDialog">Alert Dialog</string>
     <string name="text_btnToMenu">XML定义菜单</string>
     <string name="text_btnToContextMenu">ActionMode的上下文菜单</string>
+
     <string name="title_activity_alert_dialog">AlertDialogActivity</string>
     <string name="title_activity_list_view">ListViewActivity</string>
     <string name="title_activity_context_menu">ContextMenuActivity</string>
+
+    <string name="text_btnCancel">Cancel</string>
+    <string name="text_btnSignin">Sign in</string>
+
+    <string name="xml_menu">XML定义菜单 </string>
+    <string name="font_size">字体大小</string>
+    <string name="common_menu">普通菜单项</string>
+    <string name="font_color">字体颜色</string>
+    <string name="exit_app">退出</string>
+    <string name="test_text">这是一段测试文本</string>
+    <string name="font_color_red">红色</string>
+    <string name="font_color_black">黑色</string>
+    <string name="font_size_big">大</string>
+    <string name="font_size_middle">中</string>
+    <string name="font_size_small">小</string>
+
+
 </resources>
