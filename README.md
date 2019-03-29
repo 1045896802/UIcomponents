@@ -50,7 +50,7 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
   1.利用SimpleAdapter实现界面效果
   
-  （1）activity_list_view.xml
+   （1）activity_list_view.xml
   
     <?xml version="1.0" encoding="utf-8"?>
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -66,7 +66,7 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
             android:layout_height="wrap_content" />
     </android.support.design.widget.CoordinatorLayout>
     
-    （2）items.xml（作为listview的每个item）
+   （2）items.xml（作为listview的每个item）
     
     <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -94,7 +94,7 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
     </LinearLayout>
     
-   （3）ListViewActivity.java
+  （3）ListViewActivity.java
 
     package com.example.uicomponents;
 
@@ -204,7 +204,7 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
     </android.support.design.widget.CoordinatorLayout>
     
-    （2）login.xml（作为弹出框）
+   （2）login.xml（作为弹出框）
     
     <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
