@@ -226,7 +226,7 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
-            android:inputType="textPassword" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/password"
