@@ -301,92 +301,169 @@ Sample：https://github.com/googlesamples/androidRecyclerView/
 
     }
     
-  3.表格布局
+  3.使用XML定义菜单
   
-  布局文件，代码如下
+  （1）activity_menu.xml
   
     <?xml version="1.0" encoding="utf-8"?>
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/TableLayout01"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
-        android:background="#000000"
-        android:shrinkColumns="1"
-        android:stretchColumns="2">
+        tools:context=".MenuActivity">
 
-        <Button
-            android:id="@+id/Button1"
+
+        <TextView
+            android:id="@+id/tv_text"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Open...                                                                                               Ctrl-O"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/test_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    
+  （2）menu.xml（res/menu/menu.xml，作为菜单）
+  
+    <?xml version="1.0" encoding="utf-8"?>
+    <menu xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item
+            android:id="@+id/file_menu"
+            android:title="@string/xml_menu"
+            app:showAsAction="always">
+            <menu>
+                <item
+                    android:id="@+id/font_size_menu_item"
+                    android:title="@string/font_size"
+                    app:showAsAction="ifRoom|withText">
+                    <menu>
+                        <item
+                            android:id="@+id/font_size_big_menu_item"
+                            android:title="@string/font_size_big"
+                            app:showAsAction="ifRoom|withText"></item>
+                        <item
+                            android:id="@+id/font_size_middle_menu_item"
+                            android:title="@string/font_size_middle"
+                            app:showAsAction="ifRoom|withText"></item>
+                        <item
+                            android:id="@+id/font_size_small_menu_item"
+                            android:title="@string/font_size_small"
+                            app:showAsAction="ifRoom|withText"></item>
+                    </menu>
+                </item>
 
-        <Button
-            android:id="@+id/Button2"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Save...                                                                                                Ctrl-S"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/Button3"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Save As...                                                                              Ctrl+Shift+S"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#FFFFFF"></View>
-
-        <Button
-            android:id="@+id/Button4"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Import..."
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:id="@+id/Button5"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Export...                                                                                           Ctrl+E"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="#FFFFFF"></View>
-
-        <Button
-            android:id="@+id/Button6"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#000000"
-            android:gravity="left"
-            android:text=" Quit"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF" />
+                <item
+                    android:id="@+id/common_menu_menu_item"
+                    android:title="@string/common_menu"
+                    app:showAsAction="ifRoom|withText"></item>
+                <item
+                    android:id="@+id/font_color_menu_item"
+                    android:title="@string/font_color"
+                    app:showAsAction="ifRoom|withText">
 
 
-    </TableLayout>
+                    <menu>
+                        <item
+                            android:id="@+id/font_color_red_menu_item"
+                            android:title="@string/font_color_red"
+                            app:showAsAction="ifRoom|withText"></item>
+                        <item
+                            android:id="@+id/font_color_black_menu_item"
+                            android:title="@string/font_color_black"
+                            app:showAsAction="ifRoom|withText"></item>
+                    </menu>
+
+
+                </item>
+
+                <item
+                    android:id="@+id/exit_menu_item"
+                    android:title="@string/exit_app"
+                    app:showAsAction="ifRoom|withText"></item>
+
+            </menu>
+        </item>
+    </menu>
+    
+  （3）MenuActivity.java
+  
+    package com.example.uicomponents;
+
+    import android.graphics.Color;
+    import android.support.v7.app.AppCompatActivity;
+    import android.os.Bundle;
+
+    import android.app.Activity;
+    import android.os.Bundle;
+    import android.view.Menu;
+    import android.view.MenuItem;
+    import android.widget.TextView;
+    import android.widget.Toast;
+
+    public class MenuActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_menu);
+        }
+
+        /**
+         * 利用菜单资源文件创建选项菜单
+         *
+         * @param menu
+         * @return
+         */
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            // 利用菜单填充器将菜单资源文件映射成菜单
+            getMenuInflater().inflate(R.menu.menu, menu);
+            return true;
+        }
+
+        /**
+         * 菜单项单击事件处理方法
+         *
+         * @param item
+         * @return
+         */
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            TextView txt = (TextView)findViewById(R.id.tv_text);;
+            switch (item.getItemId()) {
+
+                case R.id.font_size_big_menu_item:
+                    txt.setTextSize(20);
+                    break;
+                case R.id.font_size_middle_menu_item:
+                    txt.setTextSize(16);
+                    break;
+                case R.id.font_size_small_menu_item:
+                    txt.setTextSize(10);
+                    break;
+
+                case R.id.common_menu_menu_item:
+                    Toast.makeText(this, "你单击了【普通菜单项】", Toast.LENGTH_SHORT).show();
+                    break;
+
+                case R.id.font_color_red_menu_item:
+                    txt.setTextColor(android.graphics.Color.RED);
+                    break;
+                case R.id.font_color_black_menu_item:
+                    txt.setTextColor(android.graphics.Color.BLACK);
+                    break;
+                case R.id.exit_menu_item:
+                    finish();
+                    break;
+            }
+            return true;
+        }
+    }
+  
+  4.创建上下文操作模式(ActionMode)的上下文菜单
 
   ## 三. 实验结果及截图
   
