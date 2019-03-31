@@ -1,11 +1,8 @@
 package com.example.uicomponents;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -28,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // 利用菜单填充器将菜单资源文件映射成菜单
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.activity_menu_item, menu);
         return true;
     }
 

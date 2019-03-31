@@ -1,10 +1,7 @@
 package com.example.uicomponents;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -17,10 +14,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
 public class ListViewActivity extends AppCompatActivity {
     private ListView listView;
     private SimpleAdapter simpleAdapter;
@@ -33,13 +28,14 @@ public class ListViewActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.ListView);
         //填充数据
         putData();
-        simpleAdapter = new SimpleAdapter(this, listItems, R.layout.items, new String[]{"title", "image"}, new int[]{R.id.title, R.id.image});
+        simpleAdapter = new SimpleAdapter(this, listItems, R.layout.activity_list_view_item, new String[]{"title", "image"}, new int[]{R.id.title, R.id.image});
         listView.setAdapter(simpleAdapter);
     }
 
     private void putData() {
 
-        int[] imageId = new int[]{R.drawable.cat,
+        int[] imageId = new int[]{
+                R.drawable.cat,
                 R.drawable.dog,
                 R.drawable.elephant,
                 R.drawable.lion,
@@ -61,7 +57,7 @@ public class ListViewActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setBackgroundColor(Color.TRANSPARENT);
-                Toast.makeText(ListViewActivity.this,title[position],Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListViewActivity.this, title[position], Toast.LENGTH_SHORT).show();
             }
         });
 
