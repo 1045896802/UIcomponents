@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.graphics.Color;
+import android.widget.Gallery;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -33,7 +34,6 @@ public class ListViewActivity extends AppCompatActivity {
     }
 
     private void putData() {
-
         int[] imageId = new int[]{
                 R.drawable.cat,
                 R.drawable.dog,
